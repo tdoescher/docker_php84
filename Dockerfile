@@ -5,7 +5,7 @@ RUN apt-get update \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg --with-webp --with-avif \
-  && docker-php-ext-install -j$(nproc) exif gd intl mysqli pdo pdo_mysql zip
+  && docker-php-ext-install -j$(nproc) exif gd intl mysqli opcache pdo pdo_mysql zip
 
 RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
   && { \
